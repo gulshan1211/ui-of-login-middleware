@@ -1,0 +1,20 @@
+[
+  {
+    "question": "What are workflow triggers in GitHub Actions?",
+    "answer": "Workflow triggers in GitHub Actions are events that cause a workflow to run. These events can originate from actions within your repository, external sources triggering a repository_dispatch event, scheduled times, or manual triggers. For instance, workflows can be configured to run on events like code pushes to specific branches, creation of releases, or even when issues are opened.\n\nTo define workflow triggers, you use the `on` key in your workflow YAML file. This key specifies the event(s) that will trigger the workflow. For more detailed syntax and examples, refer to GitHub's documentation on 'Workflow syntax for GitHub Actions.'\n\nExample:\nyaml\non:\n  push:\n    branches:\n      - main\n  release:\n    types: [created]\n  issues:\n    types: [opened]\n",
+    "url": "https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions",
+    "tags": ["workflow triggers", "GitHub Actions", "CI/CD"]
+  },
+  {
+    "question": "How do you trigger a workflow from within another workflow in GitHub Actions?",
+    "answer": "To trigger a workflow from within another workflow in GitHub Actions, you need to use the `workflow_dispatch` or `repository_dispatch` event, typically requiring a token other than the default `GITHUB_TOKEN` to avoid recursive runs. For example, you can utilize a GitHub App installation token or a personal access token stored as a secret.\n\nEnsure that the token used has appropriate permissions for triggering events. GitHub Apps require setup including storing the app ID and private key, while personal access tokens are created through GitHub and stored securely. Refer to GitHub's guide on 'Making authenticated API requests with a GitHub App in a GitHub Actions workflow' or 'Managing your personal access tokens' for detailed steps.\n\nExample using a personal access token:\nyaml\non:\n  workflow_dispatch:\n  push:\n    branches:\n      - main\njobs:\n  trigger_workflow:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Trigger workflow\n        env:\n          GH_TOKEN: ${{ secrets.MY_TOKEN }}\n        run: |\n          gh workflow run workflow-name -f branch=main\n",
+    "url": "https://docs.github.com/en/actions/learn-github-actions/triggering-a-repository-dispatch",
+    "tags": ["trigger workflow", "GitHub Actions", "CI/CD"]
+  },
+{
+    "question": "Defining inputs for manually triggered workflows in GitHub Actions",
+    "answer": "When using the `workflow_dispatch` event, you can optionally specify inputs that are passed to the workflow. These inputs are defined under the `inputs` key within the `on` section of your workflow YAML file.\n\nNotes:\n- The workflow only receives events when the workflow file is on the default branch.\n- Inputs are available in the `inputs` context and `github.event.inputs` context.\n- The maximum number of top-level properties for inputs is 10.\n- The maximum payload for inputs is 65,535 characters.\n\nExample:\n```yaml\non:\n  workflow_dispatch:\n    inputs:\n      logLevel:\n        description: 'Log level'\n        required: true\n        default: 'warning'\n        type: choice\n        options:\n          - info\n          - warning\n          - debug\n      print_tags:\n        description: 'True to print to STDOUT'\n        required: true\n        type: boolean\n      tags:\n        description: 'Test scenario tags'\n        required: true\n        type: string\n      environment:\n        description: 'Environment to run tests against'\n        type: environment\n        required: true\n\njobs:\n  print-tag:\n    runs-on: ubuntu-latest\n    if: ${{ inputs.print_tags }}\n    steps:\n      - name: Print the input tag to STDOUT\n        run: echo 'The tags are ${{ inputs.tags }}'\n```\nFor more information, see [Contexts in GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/contexts).",
+    "url": "https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions#workflow_dispatch",
+    "tags": ["GitHub Actions", "workflow_dispatch", "CI/CD"]
+  },
+]
