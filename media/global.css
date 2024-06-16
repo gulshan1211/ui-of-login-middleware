@@ -1,0 +1,259 @@
+:root {
+  /* Define reusable CSS variables for consistent styling */
+  --container-padding: 20px;
+  --input-padding-vertical: 6px;
+  --input-padding-horizontal: 4px;
+  --input-margin-vertical: 4px;
+  --input-margin-horizontal: 0;
+}
+
+body {
+  /* Apply VS Code theming to body text */
+  color: var(--vscode-foreground);
+  font-size: var(--vscode-font-size);
+  font-weight: var(--vscode-font-weight);
+  font-family: var(--vscode-font-family);
+  background-color: var(--vscode-editor-background);
+}
+
+ol,
+ul {
+  /* Add padding to lists */
+  padding-left: var(--container-padding);
+}
+
+body > *,
+form > * {
+  /* Add margin to direct children of body and form */
+  margin-block-start: var(--input-margin-vertical);
+  margin-block-end: var(--input-margin-vertical);
+}
+
+*:focus {
+  /* Highlight focused elements */
+  outline-color: var(--vscode-focusBorder) !important;
+}
+
+a {
+  /* Style links */
+  color: var(--vscode-textLink-foreground);
+}
+
+a:hover,
+a:active {
+  /* Style links on hover and active state */
+  color: var(--vscode-textLink-activeForeground);
+}
+
+code {
+  /* Style inline code */
+  font-size: var(--vscode-editor-font-size);
+  font-family: var(--vscode-editor-font-family);
+}
+
+button {
+  /* Style buttons */
+  border: none;
+  padding: var(--input-padding-vertical) var(--input-padding-horizontal);
+  width: 100%;
+  text-align: center;
+  outline: 1px solid transparent;
+  outline-offset: 2px !important;
+  color: var(--vscode-button-foreground);
+  background: var(--vscode-button-background);
+}
+
+button:hover {
+  /* Change background color on hover */
+  cursor: pointer;
+  background: var(--vscode-button-hoverBackground);
+}
+
+button:focus {
+  /* Highlight focused button */
+  outline-color: var(--vscode-focusBorder);
+}
+
+button.secondary {
+  /* Style secondary buttons */
+  color: var(--vscode-button-secondaryForeground);
+  background: var(--vscode-button-secondaryBackground);
+}
+
+button.secondary:hover {
+  /* Change background color of secondary buttons on hover */
+  background: var(--vscode-button-secondaryHoverBackground);
+}
+
+input:not([type="checkbox"]),
+textarea {
+  /* Style input fields and textareas */
+  display: block;
+  width: 100%;
+  border: none;
+  font-family: var(--vscode-font-family);
+  padding: var(--input-padding-vertical) var(--input-padding-horizontal);
+  color: var(--vscode-input-foreground);
+  outline-color: var(--vscode-input-border);
+  background-color: var(--vscode-input-background);
+}
+
+input::placeholder,
+textarea::placeholder {
+  /* Style placeholders */
+  color: var(--vscode-input-placeholderForeground);
+}
+
+/* Chat interface styles */
+#chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 98vh;
+  padding: var(--container-padding);
+  box-sizing: border-box;
+}
+
+#display {
+  display: flex;
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid var(--vscode-editorWidget-border);
+  background-color: var(--vscode-editor-background);
+  border-radius: 4px;
+  margin-bottom: var(--input-margin-vertical);
+  flex-direction: column-reverse;
+}
+
+#input-container {
+  display: flex;
+  border-top: 1px solid var(--vscode-editorWidget-border);
+}
+
+#userInput {
+  flex: 1;
+  padding: var(--input-padding-vertical) var(--input-padding-horizontal);
+  border: 1px solid var(--vscode-input-border);
+  border-radius: 4px 0 0 4px;
+  outline: none;
+}
+
+#Submit {
+  padding: var(--input-padding-vertical) var(--input-padding-horizontal);
+  border-radius: 0 4px 4px 0;
+  background: var(--vscode-button-background);
+  color: var(--vscode-button-foreground);
+  width: 40px; /* Set the desired width */
+  height: 30px; /* Set the desired height */
+  flex-shrink: 0; /* Prevent the button from shrinking */
+}
+
+#Submit:hover {
+  background: var(--vscode-button-hoverBackground);
+}
+
+.message {
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+  max-width: 70%;
+  word-wrap: break-word;
+}
+
+.user-message {
+  background-color: var(--vscode-button-background);
+  color: var(--vscode-button-foreground);
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.bot-message {
+  background-color: white;
+  color: black; /* Adjust to a suitable dark color if needed */
+  align-self: flex-start;
+}
+/* Spinner styles */
+.spinner {
+  display: flex;
+  justify-content: left;
+  align-items: last baseline ;
+  padding: 10px;
+}
+
+.loader {
+  border: 4px solid rgba(255, 255, 255, 0.3); /* Light grey */
+  border-top: 4px solid var(--vscode-button-background); /* Blue */
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.relevant-button {
+  background-color: #007acc; /* Blue color from VS Code */
+  border: none;
+  color: white;
+  
+  text-align: left;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center; /* Ensures content is vertically centered */
+  font-size: 10px; /* Adjust font size for smaller size */
+  margin-top: 3px; 
+  
+  border-radius: 4px; /* Optional: Add some border radius for better appearance */
+  width: auto; /* Ensures the button only takes the width it needs */
+}
+
+
+.relevant-button:hover {
+  background-color: #005f99; /* Darker blue on hover */
+  cursor: pointer; /* Change cursor on hover */
+}
+
+.relevant-button:hover {
+  background-color: #005f81; /* Darker shade of blue */
+}
+
+#login_heading {
+  color: white; /* Set font color to white */
+  font-size: medium; /* Set font size to medium */
+  margin-bottom: 20px;
+}
+
+
+#logininput {
+  width: 290px;
+  padding: 10px 20px;
+  border: 1px solid var(--vscode-input-border);
+  border-radius: 10px;
+  background-color: var(---input-background);
+  color: var(--vscode-input-foreground);
+}
+
+#storeSecret {
+  margin-top: 5px;  
+  padding: 10px 20px;
+  background-color: var(--vscode-button-background);
+  color: var(--vscode-button-foreground);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#storeSecret:hover {
+  background-color: var(--vscode-button-hoverBackground);
+}
+
+#Logindisplay {
+  margin-top: 20px;
+  color: var(--vscode-descriptionForeground);
+}
