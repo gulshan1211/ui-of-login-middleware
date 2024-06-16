@@ -1,0 +1,38 @@
+[
+  {
+    "question": "What is a workflow in GitHub Actions?",
+    "answer": "A workflow in GitHub Actions is a configurable automated process that runs one or more jobs. Workflows are defined by YAML files checked into your repository and are executed when triggered by an event, manually, or on a defined schedule. Workflows are stored in the `.github/workflows` directory of a repository and can perform various tasks such as building, testing, and deploying code.\n\nExample:\n```yaml\nname: Example Workflow\non: [push]\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: echo 'Hello, world!'\n```",
+    "url": "https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions",
+    "tags": ["workflow", "GitHub Actions", "CI/CD"]
+  },
+  {
+    "question": "What are the basic components of a GitHub Actions workflow?",
+    "answer": "A GitHub Actions workflow must contain the following basic components:\n\n1. **Trigger**: One or more events that will start the workflow.\n2. **Jobs**: One or more jobs, each of which will run on a runner machine.\n3. **Steps**: Each job contains a series of steps that either run a script or an action.\n\nFor more information on these components, see 'Understanding GitHub Actions.'\n\nExample:\n```yaml\nname: Basic Workflow\non: [push]\njobs:\n  example-job:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: echo 'Running a basic workflow'\n```",
+    "url": "https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions",
+    "tags": ["workflow basics", "GitHub Actions", "CI/CD"]
+  },
+  {
+    "question": "What triggers a workflow in GitHub Actions?",
+    "answer": "Workflow triggers in GitHub Actions are events that cause a workflow to run. These can include events that occur in your repository, events that occur outside of GitHub, scheduled times, or manual triggers. For example, a workflow can be triggered by a push to the repository, a created release, or an opened issue.\n\nExample:\n```yaml\nname: Trigger Example\non:\n  push:\n    branches:\n      - main\n  release:\n    types: [created]\njobs:\n  example-job:\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo 'Workflow triggered'\n```",
+    "url": "https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows",
+    "tags": ["triggers", "GitHub Actions", "CI/CD"]
+  },
+  {
+    "question": "How do you create an example workflow in GitHub Actions?",
+    "answer": "To create an example workflow in GitHub Actions, you need to define the workflow using YAML syntax and store it in the `.github/workflows` directory of your repository. An example workflow can be set to automatically trigger commands whenever code is pushed.\n\nExample:\n```yaml\nname: learn-github-actions\nrun-name: ${{ github.actor }} is learning GitHub Actions\non: [push]\njobs:\n  check-bats-version:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: '20'\n      - run: npm install -g bats\n      - run: bats -v\n```\nCommit these changes and push them to your GitHub repository. This workflow will run automatically each time a change is pushed to the repository.",
+    "url": "https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions",
+    "tags": ["example workflow", "GitHub Actions", "CI/CD"]
+  },
+  {
+    "question": "What are some advanced features of GitHub Actions workflows?",
+    "answer": "GitHub Actions offers several advanced features to create more complex workflows:\n\n1. **Storing Secrets**: Use secrets for sensitive data, referenced as environment variables.\n2. **Creating Dependent Jobs**: Use the `needs` keyword to create job dependencies.\n3. **Using a Matrix**: Run multiple job instances with different configurations using the `matrix` strategy.\n4. **Caching Dependencies**: Improve performance by caching files used in jobs.\n5. **Using Service Containers**: Create ephemeral containers to host services required by jobs.\n6. **Using Labels**: Control job execution by specifying runner labels.\n7. **Reusing Workflows**: Call one workflow from within another.\n8. **Security Hardening**: Utilize GitHub's security features to secure workflows.\n9. **Using Environments**: Configure environments with protection rules and secrets.\n\nExample of using secrets:\n```yaml\njobs:\n  example-job:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Retrieve secret\n        env:\n          super_secret: ${{ secrets.SUPERSECRET }}\n        run: |\n          example-command \"$super_secret\"\n```",
+    "url": "https://docs.github.com/en/actions/learn-github-actions/security-hardening-for-workflows",
+    "tags": ["advanced features", "GitHub Actions", "CI/CD"]
+  },
+  {
+    "question": "How can you view the activity for a workflow run in GitHub Actions?",
+    "answer": "To view the activity for a workflow run in GitHub Actions, follow these steps:\n\n1. Navigate to the main page of the repository on GitHub.com.\n2. Click on the 'Actions' tab under the repository name.\n3. In the left sidebar, select the workflow you want to see.\n4. From the list of workflow runs, click the name of the run to see the summary.\n5. Click on a job in the left sidebar or in the visualization graph to see the details.\n6. Click on a step to view its results.\n\nFor more information on managing workflow runs, see 'Managing workflow runs.'",
+    "url": "https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/viewing-workflow-run-history",
+    "tags": ["viewing activity", "GitHub Actions", "CI/CD"]
+  }
+]
