@@ -1,0 +1,212 @@
+[
+   {
+    "question": "What triggers the branch_protection_rule event in GitHub Actions?",
+    "answer": "The branch_protection_rule event triggers when branch protection rules in the repository are created, edited, or deleted. This event allows you to run workflows that respond to changes in branch protection settings.\n\nExample:\n```yaml\non:\n  branch_protection_rule:\n    types: [created, edited, deleted]\n\njobs:\n  enforce_protection_rules:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Check branch protection\n        if: ${{ github.event_name == 'branch_protection_rule' }}\n        run: |\n          echo 'Branch protection rule updated'\n```",
+    "url": "https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#branch_protection_rule",
+    "tags": ["branch protection", "workflow trigger", "GitHub Actions"]
+  },
+  {
+    "question": "What triggers the check_run event in GitHub Actions?",
+    "answer": "The check_run event triggers when activity related to a check run occurs, such as when a check run is created, re-requested, or completed. It allows you to automate workflows based on the status and results of automated tests or checks.\n\nExample:\n```yaml\non:\n  check_run:\n    types: [created, rerequested, completed]\n\njobs:\n  run_tests:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Run tests\n        if: ${{ github.event_name == 'check_run' }}\n        run: |\n          echo 'Tests triggered by check run'\n```",
+    "url": "https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#check_run",
+    "tags": ["check run", "automated tests", "GitHub Actions"]
+  },
+  {
+    "question": "What triggers the check_suite event in GitHub Actions?",
+    "answer": "The check_suite event triggers when check suite activity occurs, specifically when a check suite has been completed. It allows you to automate workflows based on the overall status and conclusion of multiple check runs associated with a specific commit.\n\nExample:\n```yaml\non:\n  check_suite:\n    types: [completed]\n\njobs:\n  notify_team:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Notify team\n        if: ${{ github.event_name == 'check_suite' }}\n        run: |\n          echo 'Check suite completed'\n```",
+    "url": "https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#check_suite",
+    "tags": ["check suite", "workflow trigger", "GitHub Actions"]
+  },
+  {
+    "question": "What triggers the create event in GitHub Actions?",
+    "answer": "The create event triggers when someone creates a Git reference (branch or tag) in the repository. It allows you to automate workflows based on the creation of new branches or tags.\n\nExample:\n```yaml\non:\n  create\n\njobs:\n  deploy_on_create:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Deploy on branch/tag create\n        if: ${{ github.event_name == 'create' }}\n        run: |\n          echo 'Deploying on branch/tag creation'\n```",
+    "url": "https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#create",
+    "tags": ["create event", "Git references", "GitHub Actions"]
+  },
+  {
+    "question": "What triggers the delete event in GitHub Actions?",
+    "answer": "The delete event triggers when someone deletes a Git reference (branch or tag) in the repository. It allows you to automate workflows based on the deletion of branches or tags.\n\nExample:\n```yaml\non:\n  delete\n\njobs:\n  cleanup_resources:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Cleanup resources\n        if: ${{ github.event_name == 'delete' }}\n        run: |\n          echo 'Cleaning up resources on branch/tag deletion'\n```",
+    "url": "https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#delete",
+    "tags": ["delete event", "Git references", "GitHub Actions"]
+  },
+  {
+    "question": "What triggers the deployment event in GitHub Actions?",
+    "answer": "The deployment event triggers when someone creates a deployment in the repository. It allows you to automate workflows based on the deployment of your application or services.\n\nExample:\n```yaml\non:\n  deployment\n\njobs:\n  notify_deploy:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Notify deployment\n        if: ${{ github.event_name == 'deployment' }}\n        run: |\n          echo 'Deployment started'\n```",
+    "url": "https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#deployment",
+    "tags": ["deployment", "workflow trigger", "GitHub Actions"]
+  },
+  {
+    "question": "What triggers the deployment_status event in GitHub Actions?",
+    "answer": "The deployment_status event triggers when a third party provides a deployment status. It allows you to automate workflows based on status updates of deployments in your repository.\n\nExample:\n```yaml\non:\n  deployment_status\n\njobs:\n  update_issue:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Update issue\n        if: ${{ github.event_name == 'deployment_status' }}\n        run: |\n          echo 'Deployment status updated'\n```",
+    "url": "https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#deployment_status",
+    "tags": ["deployment status", "workflow trigger", "GitHub Actions"]
+  },
+  {
+    "question": "What triggers the discussion event in GitHub Actions?",
+    "answer": "The discussion event triggers when a discussion in the repository is created, edited, or answered. It allows you to automate workflows based on changes and interactions within discussions.\n\nExample:\n```yaml\non:\n  discussion:\n    types: [created, edited, answered]\n\njobs:\n  process_discussion:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Process discussion\n        if: ${{ github.event_name == 'discussion' }}\n        run: |\n          echo 'Discussion processed'\n```",
+    "url": "https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#discussion",
+    "tags": ["discussion", "workflow trigger", "GitHub Actions"]
+  },
+  {
+    "question": "What triggers the discussion_comment event in GitHub Actions?",
+    "answer": "The discussion_comment event triggers when a comment on a discussion in the repository is created or deleted. It allows you to automate workflows based on comments made within discussions.\n\nExample:\n```yaml\non:\n  discussion_comment:\n    types: [created, deleted]\n\njobs:\n  update_wiki:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Update wiki\n        if: ${{ github.event_name == 'discussion_comment' }}\n        run: |\n          echo 'Wiki updated'\n```",
+    "url": "https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#discussion_comment",
+    "tags": ["discussion comment", "workflow trigger", "GitHub Actions"]
+  },
+  {
+    "question": "What triggers the fork event in GitHub Actions?",
+    "answer": "The fork event triggers when someone forks the repository. It allows you to automate workflows based on forks created from your repository.\n\nExample:\n```yaml\non:\n  fork\n\njobs:\n  backup_repo:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Backup repository\n        if: ${{ github.event_name == 'fork' }}\n        run: |\n          echo 'Repository forked'\n```",
+    "url": "https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#fork",
+    "tags": ["fork", "workflow trigger", "GitHub Actions"]
+  },
+  {
+    "question": "What triggers the gollum event in GitHub Actions?",
+    "answer": "The gollum event triggers when someone creates or updates a Wiki page in the repository. It allows you to automate workflows based on changes made to your repository's Wiki.\n\nExample:\n```yaml\non:\n  gollum\n\njobs:\n  update_documentation:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Update documentation\n        if: ${{ github.event_name == 'gollum' }}\n        run: |\n          echo 'Wiki page updated'\n```",
+    "url": "https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#gollum",
+    "tags": ["gollum", "Wiki updates", "GitHub Actions"]
+  },
+ {
+  "question": "What triggers the issue_comment event in GitHub Actions?",
+  "answer": "The issue_comment event triggers when an issue or pull request comment is created, edited, or deleted. It allows you to automate workflows based on interactions with issues and pull requests.\n\nExample:\n```yaml\non:\n  issue_comment:\n    types: [created, edited, deleted]\n\njobs:\n  label_issue:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Label issue\n        if: ${{ github.event_name == 'issue_comment' }}\n        run: |\n          echo 'Issue commented'\n```",
+  "url": "https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#issue_comment",
+  "tags": ["issue_comment", "GitHub Actions", "CI/CD"]
+},
+{
+  "question": "What triggers the issues event in GitHub Actions?",
+  "answer": "The issues event triggers when an issue in the repository is opened, edited, or milestoned. It allows you to automate workflows based on changes to issues within your repository.\n\nExample:\n```yaml\non:\n  issues:\n    types: [opened, edited, milestoned]\n\njobs:\n  assign_issue:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Assign issue\n        if: ${{ github.event_name == 'issues' }}\n        run: |\n          echo 'Issue updated'\n```",
+  "url": "https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#issues",
+  "tags": ["issues", "GitHub Actions", "CI/CD"]
+},
+{
+  "question": "What triggers the label event in GitHub Actions?",
+  "answer": "The label event triggers when a label in the repository is created or deleted. It allows you to automate workflows based on changes to labels within your repository.\n\nExample:\n```yaml\non:\n  label:\n    types: [created, deleted]\n\njobs:\n  update_project_board:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Update project board\n        if: ${{ github.event_name == 'label' }}\n        run: |\n          echo 'Label updated'\n```",
+  "url": "https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#label",
+  "tags": ["label", "GitHub Actions", "CI/CD"]
+},
+ {
+  "question": "What triggers the merge_group event in GitHub Actions?",
+  "answer": "The merge_group event triggers when a pull request is added to a merge queue and checks are requested. It allows you to automate workflows based on the process of merging pull requests.\n\nExample:\n```yaml\non:\n  merge_group:\n    types: [check_requested, check_completed, check_succeeded, check_failed]\n\njobs:\n  handle_merge_group:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Handle merge group\n        if: ${{ github.event_name == 'merge_group' }}\n        run: |\n          echo 'Merge group event triggered'\n```",
+  "url": "https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#merge_group",
+  "tags": ["merge_group", "GitHub Actions", "CI/CD"]
+},
+{
+  "question": "What triggers the milestone event in GitHub Actions?",
+  "answer": "The milestone event is triggered when a milestone in the repository is created or modified. This event allows you to run workflows in response to changes in milestones within your GitHub repository. You can configure your workflow to run when a milestone is opened or deleted using:\n\n```yaml\non:\n  milestone:\n    types: [opened, deleted]\n```",
+  "url": "https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#milestone",
+  "tags": ["milestone", "GitHub Actions", "CI/CD"]
+},
+{
+  "question": "When does the page_build event trigger in GitHub Actions?",
+  "answer": "The page_build event triggers when changes are pushed to the branch that serves as the publishing source for GitHub Pages. This event is useful for automating tasks when your GitHub Pages site is updated. To run a workflow on any push to your GitHub Pages source branch:\n\n```yaml\non:\n  page_build\n```",
+  "url": "https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#page_build",
+  "tags": ["page_build", "GitHub Pages", "CI/CD"]
+},
+{
+  "question": "How does the project event work in GitHub Actions?",
+  "answer": "The project event runs workflows when a project (classic) in your repository is created or modified. This event allows you to automate actions related to changes in classic GitHub Projects within your repository. To trigger a workflow when a project is created or deleted:\n\n```yaml\non:\n  project:\n    types: [created, deleted]\n```",
+  "url": "https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#project",
+  "tags": ["project", "GitHub Actions", "CI/CD"]
+},
+{
+  "question": "What triggers the project_card event in GitHub Actions?",
+  "answer": "The project_card event is triggered when a card within a classic project board in your repository is created or modified. This event allows you to automate workflows based on changes to project cards within GitHub Projects. To run a workflow when a project card is created or deleted:\n\n```yaml\non:\n  project_card:\n    types: [created, deleted]\n```",
+  "url": "https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#project_card",
+  "tags": ["project_card", "GitHub Actions", "CI/CD"]
+},
+{
+  "question": "When does the project_column event trigger in GitHub Actions?",
+  "answer": "The project_column event triggers workflows when a column within a classic project board in your repository is created or modified. This event is useful for automating tasks related to changes in project columns within GitHub Projects. To automate actions when a project column is created or modified:\n\n```yaml\non:\n  project_column:\n    types: [created, deleted]\n```",
+  "url": "https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#project_column",
+  "tags": ["project_column", "GitHub Actions", "CI/CD"]
+},
+{
+  "question": "How does the public event work in GitHub Actions?",
+  "answer": "The public event triggers workflows when your repository changes from private to public. This event is useful for executing tasks when your repository's visibility changes on GitHub. To run a workflow when your repository becomes public:\n\n```yaml\non:\n  public\n```",
+  "url": "https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#public",
+  "tags": ["public", "GitHub Actions", "CI/CD"]
+},
+{
+  "question": "What triggers the pull_request event in GitHub Actions?",
+  "answer": "The pull_request event triggers workflows when activity occurs on a pull request in the repository. It covers a wide range of actions such as assignment, labeling, opening, closing, merging, and more. The event provides detailed information about the pull request, including the SHA of the last merge commit and the branch reference it targets.\n\nExample:\n```yaml\non:\n  pull_request:\n    types: [opened, reopened, synchronize]\n\njobs:\n  process_pull_request:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Checkout repository\n        uses: actions/checkout@v2\n      - name: Process pull request\n        if: ${{ github.event_name == 'pull_request' }}\n        run: |\n          echo 'Processing pull request'\n```",
+  "url": "https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#pull_request",
+  "tags": ["pull_request", "GitHub Actions", "CI/CD"]
+},
+{
+  "question": "What triggers the pull_request_review event in GitHub Actions?",
+  "answer": "The pull_request_review event triggers workflows when a review on a pull request is submitted, edited, or dismissed. It allows you to automate tasks based on the review state, such as approval checks or notifications.\n\nExample:\n```yaml\non:\n  pull_request_review:\n    types: [submitted, edited, dismissed]\n\njobs:\n  handle_review:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Review action\n        if: ${{ github.event_name == 'pull_request_review' }}\n        run: |\n          echo 'Pull request review action triggered'\n```",
+  "url": "https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#pull_request_review",
+  "tags": ["pull_request_review", "GitHub Actions", "CI/CD"]
+},
+{
+  "question": "What triggers the pull_request_review_comment event in GitHub Actions?",
+  "answer": "The pull_request_review_comment event triggers workflows when a comment on a pull request review is created, edited, or deleted. It allows you to automate actions based on comments made during the review process.\n\nExample:\n```yaml\non:\n  pull_request_review_comment:\n    types: [created, edited, deleted]\n\njobs:\n  process_review_comment:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Process review comment\n        if: ${{ github.event_name == 'pull_request_review_comment' }}\n        run: |\n          echo 'Processing review comment'\n```",
+  "url": "https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#pull_request_review_comment",
+  "tags": ["pull_request_review_comment", "GitHub Actions", "CI/CD"]
+},
+{
+  "question": "What triggers the pull_request_target event in GitHub Actions?",
+  "answer": "The pull_request_target event triggers workflows when activity occurs on a pull request targeting the repository. It operates in the context of the base of the pull request, ensuring security by preventing execution of untrusted code from the head branch. This event is suitable for actions like labeling or commenting on pull requests from forks.\n\nExample:\n```yaml\non:\n  pull_request_target:\n    types: [assigned, opened, synchronize, reopened]\n\njobs:\n  process_pull_request_target:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Check out base repository\n        uses: actions/checkout@v2\n      - name: Process pull request from base\n        if: ${{ github.event_name == 'pull_request_target' }}\n        run: |\n          echo 'Processing pull request from base'\n```",
+  "url": "https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#pull_request_target",
+  "tags": ["pull_request_target", "GitHub Actions", "CI/CD"]
+},
+{
+  "question": "What triggers the push event in GitHub Actions?",
+  "answer": "The push event triggers when a commit or tag is pushed to the repository. It allows you to automate workflows based on changes pushed to specific branches or tags.\n\nExample:\n```yaml\non:\n  push:\n    branches:\n      - 'main'\n      - 'releases/**'\n    tags:\n      - 'v1.**'\n    paths:\n      - '**.js'\n\njobs:\n  deploy_on_push:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Deploy on push\n        if: github.event_name == 'push'\n        run: |\n          echo 'Deploying on push'\n```",
+  "url": "https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#push",
+  "tags": ["push", "GitHub Actions", "CI/CD"]
+},
+{
+  "question": "What triggers the registry_package event in GitHub Actions?",
+  "answer": "The registry_package event triggers when activity related to GitHub Packages occurs, such as publishing or updating a package version. It allows you to automate workflows based on package updates.\n\nExample:\n```yaml\non:\n  registry_package:\n    types: [published, updated]\n\njobs:\n  handle_package:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Handle package event\n        if: github.event_name == 'registry_package'\n        run: |\n          echo 'Package event triggered'\n```",
+  "url": "https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#registry_package",
+  "tags": ["registry_package", "GitHub Actions", "CI/CD"]
+},
+{
+  "question": "What triggers the release event in GitHub Actions?",
+  "answer": "The release event triggers when a release is published, unpublished, created, edited, deleted, or when a pre-release is published. It allows you to automate workflows based on release activity in your repository.\n\nExample:\n```yaml\non:\n  release:\n    types: [published, unpublished, created, edited, deleted, prereleased, released]\n\njobs:\n  handle_release:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Handle release event\n        if: github.event_name == 'release'\n        run: |\n          echo 'Release event triggered'\n```",
+  "url": "https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#release",
+  "tags": ["release", "GitHub Actions", "CI/CD"]
+},
+{
+  "question": "What triggers the repository_dispatch event in GitHub Actions?",
+  "answer": "The repository_dispatch event triggers a workflow when you use the GitHub API to send a repository_dispatch webhook event. This allows you to trigger workflows for activities that occur outside of GitHub.\n\nExample:\n```yaml\non:\n  repository_dispatch:\n    types: [test_result]\n\njobs:\n  run_if_test_fails:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Handle repository_dispatch event\n        if: github.event_name == 'repository_dispatch'\n        run: |\n          echo 'Repository dispatch event triggered'\n```",
+  "url": "https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#repository_dispatch",
+  "tags": ["repository_dispatch", "GitHub Actions", "CI/CD"]
+},
+{
+  "question": "What triggers the schedule event in GitHub Actions?",
+  "answer": "The schedule event triggers a workflow at specific times defined using POSIX cron syntax. Scheduled workflows run on the latest commit on the default or base branch.\n\nExample:\n```yaml\non:\n  schedule:\n    - cron: '30 5,17 * * *'\n\njobs:\n  scheduled_job:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Run scheduled job\n        run: |\n          echo 'Scheduled job triggered'\n```",
+  "url": "https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#schedule",
+  "tags": ["schedule", "GitHub Actions", "CI/CD"]
+},
+{
+  "question": "What triggers the status event in GitHub Actions?",
+  "answer": "The status event triggers a workflow when the status of a Git commit changes, such as error, failure, pending, or success. It allows you to automate workflows based on these status changes.\n\nExample:\n```yaml\non:\n  status\n\njobs:\n  if_error_or_failure:\n    runs-on: ubuntu-latest\n    if: github.event.state == 'error' || github.event.state == 'failure'\n    steps:\n      - name: Handle status event\n        run: |\n          echo 'Status event triggered'\n```",
+  "url": "https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#status",
+  "tags": ["status", "GitHub Actions", "CI/CD"]
+},
+{
+  "question": "What triggers the watch event in GitHub Actions?",
+  "answer": "The watch event triggers a workflow when the repository is starred by someone. Currently, only the 'started' activity type is supported.\n\nExample:\n```yaml\non:\n  watch:\n    types: [started]\n\njobs:\n  handle_watch_event:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Handle watch event\n        if: github.event_name == 'watch'\n        run: |\n          echo 'Watch event triggered'\n```",
+  "url": "https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#watch",
+  "tags": ["watch", "GitHub Actions", "CI/CD"]
+},
+{
+  "question": "What triggers the workflow_call event in GitHub Actions?",
+  "answer": "The workflow_call event triggers a workflow when it is called by another workflow. The event payload in the called workflow is identical to that of the calling workflow.\n\nExample:\n```yaml\non: workflow_call\n\njobs:\n  handle_call:\n    runs-on: ubuntu-latest\n    steps:\n      - name: Handle workflow_call event\n        if: github.event_name == 'workflow_call'\n        run: |\n          echo 'Workflow call event triggered'\n```",
+  "url": "https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#workflow_call",
+  "tags": ["workflow_call", "GitHub Actions", "CI/CD"]
+},
+{
+  "question": "What triggers the workflow_dispatch event in GitHub Actions?",
+  "answer": "The workflow_dispatch event triggers a workflow run manually. It allows you to provide inputs when triggering the workflow via GitHub API, GitHub CLI, or the GitHub web interface.\n\nExample:\n```yaml\non:\n  workflow_dispatch:\n    inputs:\n      logLevel:\n        description: 'Log level'\n        required: true\n        default: 'warning'\n        type: choice\n        options:\n          - info\n          - warning\n          - debug\n\njobs:\n  log_the_inputs:\n    runs-on: ubuntu-latest\n    steps:\n      - run: |\n          echo \"Log level: $LEVEL\"\n          echo \"Tags: $TAGS\"\n          echo \"Environment: $ENVIRONMENT\"\n        env:\n          LEVEL: ${{ inputs.logLevel }}\n          TAGS: ${{ inputs.tags }}\n          ENVIRONMENT: ${{ inputs.environment }}\n```",
+  "url": "https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#workflow_dispatch",
+  "tags": ["workflow_dispatch", "GitHub Actions", "CI/CD"]
+},
+{
+  "question": "What triggers the workflow_run event in GitHub Actions?",
+  "answer": "The workflow_run event triggers a workflow when another workflow is requested, in progress, or completed. It allows you to execute a workflow based on the execution or completion of another workflow.\n\nExample:\n```yaml\non:\n  workflow_run:\n    workflows: [Build]\n    types: [completed]\n\njobs:\n  on_success:\n    runs-on: ubuntu-latest\n    if: ${{ github.event.workflow_run.conclusion == 'success' }}\n    steps:\n      - run: echo 'The triggering workflow passed'\n  on_failure:\n    runs-on: ubuntu-latest\n    if: ${{ github.event.workflow_run.conclusion == 'failure' }}\n    steps:\n      - run: echo 'The triggering workflow failed'\n```",
+  "url": "https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#workflow_run",
+  "tags": ["workflow_run", "GitHub Actions", "CI/CD"]
+}
+]
