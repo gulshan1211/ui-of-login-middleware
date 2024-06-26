@@ -1,0 +1,36 @@
+### Eplx Chatbot: Your Eplx-Pair Partner
+
+The Eplx Chatbot is your dedicated Eplx-pair partner, designed to assist you with any issues related to Eplx. This intelligent chatbot offers chat-based assistance to provide solutions to your problems efficiently. Additionally, it can supply useful documents and links to help you explore solutions in greater detail.
+
+
+### How to Install Eplx Chatbot
+
+To install the Eplx Chatbot using the provided VSIX file, follow these steps:
+
+1. **Open Extensions Tab**: From the Activity Bar, click on the Extensions tab.
+2. **Access Extension Menu**: Click on the settings icon in the Extensions menu.
+3. **Install from VSIX**: Select "Install from VSIX" from the dropdown menu.
+4. **Browse for the VSIX File**: Locate and select the Eplx Chatbot VSIX file on your computer.
+5. **Install**: Follow the prompts to complete the installation.
+
+The Eplx Chatbot will be ready to use once the installation is complete.
+
+
+### Using Eplx Chatbot After Installation
+
+After installing the Eplx Chatbot, an Eplx Chatbot icon will appear in the Activity Bar. Follow these steps to start using the chatbot:
+
+1. **Launch the Chatbot**: Click on the Eplx Chatbot icon in the Activity Bar to start the chatbot.
+2. **Login Page**: Upon launching, a login page will appear, prompting you to enter a key (token). This key must be generated from Confluence.
+3. **Enter Key**: Input the generated key into the provided field. The secret key is securely stored.
+4. **Key Changes**: If the key changes in the future, you will be redirected to the login page to enter the new key.
+5. **Main Chatbot Page**: Once the chatbot authenticates and confirms the key, you will be redirected to the main chatbot page where you can begin asking your queries.
+
+### Interacting with Eplx Chatbot
+
+1. **Ask Eplx-Related Questions**: Developers can ask any Eplx-related questions to the chatbot. The chatbot will provide the most relevant answers and also supply links to Confluence documents.
+2. **Open Confluence Documents in IDE**: The chatbot offers a feature to open Confluence documents directly in the IDE. By clicking "Read More," a new tab will open on the right side of the VS Code editor, allowing developers to view the document while editing their code.
+3. **Refresh and Logout Options**: The display includes options to refresh the chatbot and to log out. Developers can log out from the chatbot using the logout option.
+
+The Eplx Chatbot is now ready to assist you with your Eplx-related issues efficiently within your development environment.
+
