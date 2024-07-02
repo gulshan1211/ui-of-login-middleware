@@ -1,5 +1,5 @@
-import { token , query } from './main.js';
-import { display_answer_url,displayBotMessage,displayErrorMessage,showSpinner,hideSpinner } from './ui.js';
+import {  query } from './main.js';
+import { display_answer_url, displayBotMessage, displayErrorMessage, showSpinner, hideSpinner } from './ui.js';
 
 //Function to fetch the bot's response from the API with a timeout
 export async function fetchResponse() {
@@ -13,13 +13,14 @@ export async function fetchResponse() {
         method: 'POST',
         body: formData,
         headers: {
-            
+
             'Accept': 'application/json',
             'Authorization': `Bearer ${token}`,
         }
     };
 
-    try {showSpinner();
+    try {
+        showSpinner();
         const response = await fetchWithTimeout(url, options, 30000);
 
         // Log the response status to the console
@@ -79,11 +80,11 @@ export async function getResponse() {
 
         const result = await response.json();
         const answer = result.answer;
-        const link = result.link ;
+        const link = result.link;
         // Display the bot's response in the chat window
         // Display the bot's response with the answer and link
         display_answer_url(answer, link);
-        
+
 
     } catch (error) {
         // Log the error to the console
@@ -96,9 +97,6 @@ export async function getResponse() {
         hideSpinner();
     }
 }
-
-
-
 
 // Utility function to fetch with a timeout
 async function fetchWithTimeout(url, options, timeout = 30000) {

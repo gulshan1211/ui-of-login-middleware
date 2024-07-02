@@ -1,4 +1,5 @@
-import { sendRelevantData } from "./api.js";
+import { sendRelevantDataToExtension } from "./call.js";
+import { query } from "./main.js";
 // Function to display initial bot message
 export function displayInitialBotMessage() {
     const chatWindow = document.getElementById('display');
@@ -56,7 +57,7 @@ export function display_answer_url(answer, link = '') {
     // Add event listener for the relevant button
     const relevantButton = botMessageDiv.querySelector('.relevant-button');
     if (relevantButton) {
-        relevantButton.addEventListener('click', () => sendRelevantData(query, answer, link));
+        relevantButton.addEventListener('click', () => sendRelevantDataToExtension(query, answer, link));
         relevantButton.addEventListener('click', (event) => showPopupMessage(event, 'Thank you for your feedback!'));
     }
 }

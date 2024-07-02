@@ -1,14 +1,17 @@
-
-// Acquire the VS Code API to communicate with the extension
-const vscode = acquireVsCodeApi();
+// Import the VS Code API from the main module
+import { vscode } from "./main.js";
 
 // Wait for the DOM to fully load before running the script
-window.addEventListener('DOMContentLoaded', (event) => {
-    // Attach event listener to the storeSecret button
+window.addEventListener('DOMContentLoaded', () => {
+    // Attach event listener to the "storeSecret" button
     document.getElementById('storeSecret').addEventListener('click', handleStoreSecret);
 });
 
-// Function to handle storing the API key
+/** 
+ * Handles the storing of the API key.
+ * Sends the API key to the extension if it's not empty.
+ * Displays an error message if the API key is empty.
+ */
 function handleStoreSecret() {
     const userInput = document.getElementById('logininput').value.trim();
 
@@ -26,3 +29,4 @@ function handleStoreSecret() {
         });
     }
 }
+
